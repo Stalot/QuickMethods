@@ -1,12 +1,16 @@
 from setuptools import setup, find_packages
+from pathlib import Path
 
-#def long_description() -> str:
-#    long_description: str = ''
-#    with open('README.md', 'r', encoding='utf-8') as file:
-#        long_description += file.read()
-#    with open('CHANGELOG.md', 'r', encoding='utf-8') as file:
-#        long_description += f'\n\n{file.read()}'
-#    return long_description
+def long_description() -> str:
+    base_dir: Path = Path.cwd()
+    long_description: str = ''
+    print("Extracting long description from README.md and CHANGELOG.md...")
+    with open(base_dir / 'README.md', 'r', encoding='utf-8') as file:
+        long_description += file.read()
+    with open(base_dir / 'CHANGELOG.md', 'r', encoding='utf-8') as file:
+        long_description += f'\n\n{file.read()}'
+    print("Long description built successfully.")
+    return long_description
 
 setup(
     name='quickMethods',
