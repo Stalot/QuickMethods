@@ -22,9 +22,7 @@ class QuickMethods:
 
 
 class Number():
-    """
-    # Number
-    
+    """    
     A simple class to deal with both float and int numbers.
     """
     def __init__(self, x: int | float | str):
