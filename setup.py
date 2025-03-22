@@ -2,16 +2,16 @@ from setuptools import setup, find_packages
 from pathlib import Path
 
 def long_description() -> str:
-    base_dir: Path = Path(__file__).parent
+    base_dir: Path = Path.cwd()
     long_description: str = ''
     print("Extracting content from README.md...")
     with open(base_dir / 'README.md', 'r', encoding='utf-8') as file:
         long_description += file.read()
     print("README.md done.")
-    print("Extracting content from CHANGELOG.md...")
-    with open(base_dir / 'CHANGELOG.md', 'r', encoding='utf-8') as file:
-        long_description += f'\n\n{file.read()}'
-    print("CHANGELOG.md done.")
+    #print("Extracting content from CHANGELOG.md...")
+    #with open(base_dir / 'CHANGELOG.md', 'r', encoding='utf-8') as file:
+    #    long_description += f'\n\n{file.read()}'
+    #print("CHANGELOG.md done.")
     print("Long description built successfully.")
     return long_description
 
