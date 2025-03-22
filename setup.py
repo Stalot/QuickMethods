@@ -14,9 +14,9 @@ def long_description() -> str:
 
 setup(
     name='quickMethods',
-    version='0.0.1',
+    version='0.0.2',
     description='A simple library to make your life faster with quick methods!',
-    #long_description=long_description(),
+    long_description=long_description(),
     long_description_content_type='text/markdown',
     author='Orly Neto',
     author_email='orly2carvalhoneto@gmail.com',

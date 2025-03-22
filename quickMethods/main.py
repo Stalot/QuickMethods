@@ -5,6 +5,9 @@ class QuickMethods:
     def say_hello():
         print("Hello!")
     
+    def say_bye():
+        print("Goodbye!")
+    
 class Number():
     def __init__(self, x: int | float | complex):
         self.x_number: int | float | complex = x
