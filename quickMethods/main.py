@@ -19,18 +19,29 @@ class QuickMethods:
             return True
         except ValueError:
             return False
-    
-    
-    
+
+
 class Number():
-    def __init__(self, x: int | float | complex):
-        self.x_number: int | float | complex = x
+    """
+    # Number
+    
+    A simple class to deal with both float and int numbers.
+    """
+    def __init__(self, x: int | float | str):
+        if type(x) != int and type(x) != float and type(x) != str:
+            raise ValueError(f"{type(x).__name__} '{x}' is invalid.")
+        if not QuickMethods().string_is_number(str(x)):
+            raise ValueError(f"'{x}' is not a valid number.")
+        
+        self.x_number: float | int = complex(x).real
+        if self.x_number.is_integer():
+            self.x_number = int(self.x_number)
     
     def __str__(self):
         return str(self.x_number)
     
     def __repr__(self):
-        return str(f"Number({self.x_number})")
+        return str(f"Number({type(self.x_number).__name__}({self.x_number}))")
     
     def __eq__(self, other_value):
         if isinstance(other_value, Number):
@@ -93,16 +104,22 @@ class Number():
         return rounded_value
     
     def is_int(self) -> bool:
-        number_is_int: bool = False
-        if type(self.x_number) == int:
-            number_is_int = True
-        return number_is_int
+        return type(self.x_number) == int
 
     def is_float(self) -> bool:
-        number_is_float: bool = False
-        if type(self.x_number) == float:
-            number_is_float = True
-        return number_is_float
+        return type(self.x_number) == float
+
+    def is_even(self) -> bool:
+        """
+        Even numbers are numbers that can be divided by 2 without leaving a remainder.
+        """
+        return (self.x_number / 2).is_integer()
+
+    def is_odd(self) -> bool:
+        """
+        Odd numbers are integers that cannot be divided by two without a remainder.
+        """
+        return not (self.x_number / 2).is_integer()
 
 if __name__ == "__main__":
     qm = QuickMethods()
@@ -112,3 +129,8 @@ if __name__ == "__main__":
     print(qm.string_is_number("7j"))
     
     first_value = Number(12)
+    second_value = Number(5)
+    third_value = Number(24)
+    
+    for number in (first_value, second_value, third_value):
+        print(f"\n{repr(number)}\nis even: {number.is_even()}\nis odd: {number.is_odd()}")
