@@ -5,16 +5,20 @@ def long_description() -> str:
     long_description: str = ''
     print("Extracting content from README.md...")
     try:
-        base_dir: Path = Path.cwd()
-        with open(base_dir / 'README.md', 'r', encoding='utf-8') as file:
+        base_dir: Path = Path(__file__).parent
+        filepath: Path = base_dir / 'README.md'
+        print("README PATH:", filepath)
+        with open(filepath, 'r', encoding='utf-8') as file:
             long_description += file.read()
         print("README.md done.")
     except Exception as e:
         print(f"Failed to read README.md content: {e}")
     print("Extracting content from CHANGELOG.md...")
     try:
-        base_dir: Path = Path.cwd()
-        with open(base_dir / 'CHANGELOG.md', 'r', encoding='utf-8') as file:
+        base_dir: Path = Path(__file__).parent
+        filepath: Path = base_dir / 'CHANGELOG.md'
+        print("CHANGELOG PATH:", filepath)
+        with open(filepath, 'r', encoding='utf-8') as file:
             long_description += f'\n\n{file.read()}'
         print("CHANGELOG.md done.")
     except Exception as e:
