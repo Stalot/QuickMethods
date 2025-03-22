@@ -2,10 +2,10 @@ from setuptools import setup, find_packages
 from pathlib import Path
 
 def long_description() -> str:
-    base_dir: Path = Path.cwd()
     long_description: str = ''
     print("Extracting content from README.md...")
     try:
+        base_dir: Path = Path.cwd()
         with open(base_dir / 'README.md', 'r', encoding='utf-8') as file:
             long_description += file.read()
         print("README.md done.")
@@ -13,6 +13,7 @@ def long_description() -> str:
         print(f"Failed to read README.md content: {e}")
     print("Extracting content from CHANGELOG.md...")
     try:
+        base_dir: Path = Path.cwd()
         with open(base_dir / 'CHANGELOG.md', 'r', encoding='utf-8') as file:
             long_description += f'\n\n{file.read()}'
         print("CHANGELOG.md done.")
