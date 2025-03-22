@@ -113,12 +113,16 @@ class Number():
         """
         Even numbers are numbers that can be divided by 2 without leaving a remainder.
         """
+        if type(self.x_number) is not int:
+            raise ValueError(f"{type(self.x_number).__name__} '{self.x_number}' is invalid: only integers can be classified as even or odd.")
         return (self.x_number / 2).is_integer()
 
     def is_odd(self) -> bool:
         """
         Odd numbers are integers that cannot be divided by two without a remainder.
         """
+        if type(self.x_number) is not int:
+            raise ValueError(f"{type(self.x_number).__name__} '{self.x_number}' is invalid: only integers can be classified as even or odd.")
         return not (self.x_number / 2).is_integer()
 
 if __name__ == "__main__":
@@ -130,7 +134,7 @@ if __name__ == "__main__":
     
     first_value = Number(12)
     second_value = Number(5)
-    third_value = Number(24)
+    third_value = Number(24.4)
     
     for number in (first_value, second_value, third_value):
         print(f"\n{repr(number)}\nis even: {number.is_even()}\nis odd: {number.is_odd()}")
