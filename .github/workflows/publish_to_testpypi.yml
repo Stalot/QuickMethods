@@ -16,7 +16,6 @@ jobs:
     - name: Debug working directory
       run: |
         ls -la  # List files in the root directory
-        ls -la src  # List files in the src directory (if applicable)
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
