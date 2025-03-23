@@ -1,4 +1,5 @@
 import getpass
+import math
 
 class QuickMethods:
     def __init__(self):
@@ -71,35 +72,85 @@ class Number():
         else:
             return self.x_number >= other_value
 
-    def __add__(self, other_value):
+    def __add__(self, other_value: float | int):
         if isinstance(other_value, Number):
             return self.x_number + other_value.x_number
-        else:
-            return self.x_number + other_value
+        return self.x_number + other_value
 
-    def __sub__(self, other_value):
+    def __radd__(self, other_value: float | int):
+        if isinstance(other_value, Number):
+            return self.x_number + other_value.x_number
+        return self.x_number + other_value
+
+    def __sub__(self, other_value: float | int):
         if isinstance(other_value, Number):
             return self.x_number - other_value.x_number
-        else:
-            return self.x_number - other_value
+        return self.x_number - other_value
+        
+    def __rsub__(self, other_value: float | int):
+        if isinstance(other_value, Number):
+            return self.x_number - other_value.x_number
+        return self.x_number - other_value
 
-    def __mul__(self, other_value):
+    def __mul__(self, other_value: float | int):
         if isinstance(other_value, Number):
             return self.x_number * other_value.x_number
-        else:
-            return self.x_number * other_value
+        return self.x_number * other_value
+    
+    def __rmul__(self, other_value: float | int):
+        if isinstance(other_value, Number):
+            return self.x_number * other_value.x_number
+        return self.x_number * other_value
 
-    def __truediv__(self, other_value):
+    def __truediv__(self, other_value: float | int):
         if isinstance(other_value, Number):
             return self.x_number / other_value.x_number
-        else:
-            return self.x_number / other_value
+        return self.x_number / other_value
+    
+    def __rtruediv__(self, other_value: float | int):
+        if isinstance(other_value, Number):
+            return other_value.x_number / self.x_number
+        return other_value / self.x_number
+    
+    def __pow__(self, other_value: float | int):
+        if isinstance(other_value, Number):
+            return self.x_number ** other_value.x_number
+        return self.x_number ** other_value
+
+    def __rpow__(self, other_value: float | int):
+        if isinstance(other_value, Number):
+            return other_value.x_number ** self.x_number
+        return other_value ** self.x_number
     
     def __round__(self, ndigits: None = None):
         rounded_value = int(self.x_number)
         if ndigits:
             rounded_value = round(self.x_number, ndigits)
         return rounded_value
+    
+    def __neg__(self):
+        return -self.x_number
+    
+    def __invert__(self):
+        return ~self.x_number
+    
+    def __or__(self, other_value):
+        return self.x_number | other_value
+    
+    def __ror__(self, other_value):
+        return other_value | self.x_number
+    
+    def __and__(self, other_value):
+        return self.x_number & other_value
+
+    def __rand__(self, other_value):
+        return other_value & self.x_number
+    
+    def __ceil__(self):
+        return math.ceil(self.x_number)
+    
+    def __floor__(self):
+        return math.floor(self.x_number)
     
     def is_int(self) -> bool:
         return type(self.x_number) == int
@@ -111,17 +162,10 @@ class Number():
         """
         Even numbers are numbers that can be divided by 2 without leaving a remainder.
         """
-        if type(self.x_number) is not int:
-            raise ValueError(f"{type(self.x_number).__name__} '{self.x_number}' is invalid: only integers can be classified as even or odd.")
+        number_to_check: int = self.x_number
+        if type(number_to_check) is not int:
+                raise ValueError(f"{type(self.x_number).__name__} '{self.x_number}' is invalid: only integers can be classified as even or odd.")
         return (self.x_number / 2).is_integer()
-
-    def is_odd(self) -> bool:
-        """
-        Odd numbers are integers that cannot be divided by two without a remainder.
-        """
-        if type(self.x_number) is not int:
-            raise ValueError(f"{type(self.x_number).__name__} '{self.x_number}' is invalid: only integers can be classified as even or odd.")
-        return not (self.x_number / 2).is_integer()
 
 if __name__ == "__main__":
     qm = QuickMethods()
