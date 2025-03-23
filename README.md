@@ -1,5 +1,7 @@
 # QuickMethods
 
-**QuickMethods** is an extremelly simple python library, It's main goal is simplify your miserable life with reusable methods that you would need to redo everytime you create a new project.
+Tired of rewriting the same methods over and over?
 
-Simple stuff like checking if a string is a number.
+**QuickMethods** is an extremely simple Python library, a collection designed to simplify your *miserable life* by providing reusable methods that you frequently use in your code. No more redoing the same work every time you start a new project!
+
+It covers simple tasks, like checking if a string is a number, and more.

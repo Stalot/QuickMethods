@@ -4,10 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "quickMethods"
+description = "A collection of quick and repetitive methods that you probably use and need to redo every time you create a new project"
 version = "0.0.4"
 requires-python = ">= 3.8"
 authors = [
-  {name = "Orly Neto", email = "orly2carvalhoneto@gmail.com"},
+  {name = "Orly Neto", email = "orly2carvalhoneto@gmail.com"}
 ]
 maintainers = [
   {name = "Orly Neto", email = "orly2carvalhoneto@gmail.com"}
