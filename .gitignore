@@ -3,3 +3,4 @@ build/
 dist/
 quickMethods.egg-info/
 testing/
+__pycache__/
