@@ -1,5 +1,6 @@
 import getpass
 import math
+from collections.abc import Iterable
 
 class QuickMethods:
     def __init__(self):
@@ -21,6 +22,17 @@ class QuickMethods:
         except ValueError:
             return False
 
+    def join_keys(self, keys: list[str] | tuple[str] = ['hello', 'world'], separator: str = '+') -> str:
+        """
+        Joins multiple string keys in a single string.
+        """
+        result = keys
+        if not isinstance(keys, Iterable):
+            raise ValueError(f"{type(keys).__name__} {keys} is not iterable.")
+        if type(keys) is not str:
+            string_keys = (str(key) for key in keys)
+            result = separator.join(string_keys)
+        return str(result)
 
 class Number():
     """    
@@ -176,7 +188,7 @@ if __name__ == "__main__":
     
     first_value = Number(12)
     second_value = Number(5)
-    third_value = Number(24.4)
+    third_value = Number(24)
     
     for number in (first_value, second_value, third_value):
-        print(f"\n{repr(number)}\nis even: {number.is_even()}\nis odd: {number.is_odd()}")
+        print(f"\n{repr(number)}\nis even: {number.is_even()}")
