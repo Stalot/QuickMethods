@@ -1,1 +1,2 @@
-from .main import QuickMethods, Number
+from .main import QuickMethods, QuickMath
+from .beta import Number
